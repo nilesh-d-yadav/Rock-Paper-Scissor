@@ -6,22 +6,29 @@ const msgChoice=document.querySelector("#msg")
 const fullBody=document.querySelector("body")
 const userScoreText=document.querySelector("#user-score")
 const compScoreText=document.querySelector("#computer-score")
+const Restart=document.querySelector(".Restart")
+
 
 const restartGame=(userScore, compScore)=>{
     if(userScore==5 || compScore==5){
         let winner = userScore==5?"User":"AI"
-        // alert(`${winner} has scored 5 Points and is the winner. Restart now`)
-        userScoreText.innerText=0;
-        compScoreText.innerText=0;
-        userScore=0;
-        compScore=0;
-        msgChoice.innerText=`Play Again`
+        
+        // userScoreText.innerText=0;
+        // compScoreText.innerText=0;
+        // userScore=0;
+        // compScore=0;
+        msgChoice.innerText=`${winner} has scored 5 Points first and is the winner. `
         msgChoice.style.backgroundColor="#081b31"
-        fullBody.style.backgroundColor="#fff"  
+        fullBody.style.backgroundColor="#fff"
+
+        Restart.addEventListener("click",()=>{
+            userScoreText.innerText=0;
+            compScoreText.innerText=0;
+            userScore=0;
+            compScore=0;  
+            msgChoice.innerText="Play your move"
+        })   
     }
-     
-
-
 }
 
 const showWinner=(userWin, userChoice, compChoice)=>{
@@ -44,7 +51,7 @@ const showWinner=(userWin, userChoice, compChoice)=>{
         fullBody.style.backgroundColor="rgb(234, 57, 87)"
     }
 
-    // restartGame(userScore, compScore)
+    restartGame(userScore, compScore)
      
 }
 
